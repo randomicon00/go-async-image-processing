@@ -117,31 +117,6 @@ With the worker pool:
 - Controlled concurrency, predictable resource usage
 - Better throughput under load
 
-## Architecture
-
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Client    │────▶│  HTTP API   │────▶│  Job Queue  │
-└─────────────┘     └─────────────┘     └──────┬──────┘
-                                               │
-                       ┌───────────────────────┘
-                       ▼
-              ┌─────────────────┐
-              │   Worker Pool   │
-              │  ┌───┐ ┌───┐    │
-              │  │ W │ │ W │... │
-              │  └───┘ └───┘    │
-              └───────┬─────────┘
-                      ▼
-              ┌───────────────┐
-              │  Image Proc.  │
-              └───────┬───────┘
-                      ▼
-              ┌───────────────┐
-              │  SQLite / FS  │
-              └───────────────┘
-```
-
 ## Testing
 
 ```bash
