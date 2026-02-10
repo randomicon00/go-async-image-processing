@@ -8,6 +8,10 @@ You upload an image, tell it what you want done (resize to 800x600, make a thumb
 
 The worker pool handles multiple concurrent jobs efficiently, so if you send 50 resize requests, they'll be processed in parallel instead of one-by-one.
 
+## Architecture
+
+![Architecture Diagram](https://github.com/user-attachments/assets/95e435d9-e7f3-4973-9cfe-6b694baab715)
+
 ## Quick Start
 
 ```bash
