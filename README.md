@@ -119,14 +119,14 @@ With the worker pool:
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │   Client    │────▶│  HTTP API   │────▶│  Job Queue  │
 └─────────────┘     └─────────────┘     └──────┬──────┘
-                                                │
-                       ┌────────────────────────┘
+                                               │
+                       ┌───────────────────────┘
                        ▼
               ┌─────────────────┐
               │   Worker Pool   │
-              │  ┌───┐ ┌───┐   │
-              │  │ W │ │ W │...│
-              │  └───┘ └───┘   │
+              │  ┌───┐ ┌───┐    │
+              │  │ W │ │ W │... │
+              │  └───┘ └───┘    │
               └───────┬─────────┘
                       ▼
               ┌───────────────┐
@@ -153,11 +153,11 @@ Includes tests for:
 ## Production Considerations
 
 What's already handled:
-- ✅ Graceful shutdown (waits for in-progress jobs)
-- ✅ Request validation
-- ✅ Structured logging
-- ✅ Configurable via environment variables
-- ✅ SQLite for persistence
+- Graceful shutdown (waits for in-progress jobs)
+- Request validation
+- Structured logging
+- Configurable via environment variables
+- SQLite for persistence
 
 What you'd want to add for real production:
 - S3/MinIO instead of local filesystem for storage
