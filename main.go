@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"image"
 	"image/jpeg"
@@ -171,8 +172,15 @@ func submitJobHandler(c *gin.Context) {
 	inputPath := filepath.Join(config.UploadDir, fmt.Sprintf("%s_input", jobID))
 	outputPath := filepath.Join(config.OutputDir, fmt.Sprintf("%s_output", jobID))
 
-	// Decode and save image (simplified - in real app, validate and decode properly)
-	if err := os.WriteFile(inputPath, []byte(req.ImageData), 0644); err != nil {
+	// Decode base64 image data
+	imageBytes, err := base64.StdEncoding.DecodeString(req.ImageData)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid base64 image data"})
+		return
+	}
+
+	// Save decoded image
+	if err := os.WriteFile(inputPath, imageBytes, 0644); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save image"})
 		return
 	}
