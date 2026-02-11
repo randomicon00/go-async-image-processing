@@ -1,6 +1,6 @@
 # Image Processing Service
 
-A lightweight, concurrent image processing API built with Go. This service accepts image processing jobs (like resizing or creating thumbnails) and processes them asynchronously using a worker pool pattern.
+A lightweight, concurrent image processing API built with Go. This service accepts image processing jobs (such as resizing and generating thumbnails) and processes them asynchronously using a worker pool pattern.
 
 ## What This Does
 
@@ -128,13 +128,9 @@ Tested on **Intel Core i7-1260P** (12th Gen, 12 cores / 16 threads, up to 4.7 GH
 | 16 | ~2s | 25 jobs/s | Matches CPU core count |
 | 50 | ~2s | 25 jobs/s | Diminishing returns |
 
-**Key Finding:** 16 workers ≈ 50 workers performance-wise. Beyond your CPU core count (16), adding more workers doesn't help—there's no CPU left to run them.
+**Key Finding:** 16 workers ≈ 50 workers performance-wise. Beyond your CPU core count (16), adding more workers doesn't help as there is no CPU left to run them in parallel.
 
-**Production Tip:** Size your worker pool to your CPU core count:
-- 4 cores → 4 workers
-- 8 cores → 8 workers  
-- 16 cores → 12-16 workers
-- 32 cores → 24-32 workers
+**Production Tip:** Size your worker pool to your CPU core count.
 
 ## Testing
 
