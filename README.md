@@ -24,8 +24,6 @@ go run main.go
 # Server starts on port 8080 by default
 ```
 
-That's it. No Docker, no complex setup. It creates the necessary directories (uploads, outputs, data) automatically.
-
 ## Configuration
 
 Set these environment variables if you want to customize things:
@@ -183,4 +181,4 @@ I wanted to demonstrate:
 3. **Production awareness** - Graceful shutdown, logging, config management
 4. **Async job processing** - Real-world pattern for CPU-intensive tasks
 
-The code is intentionally straightforward. No unnecessary abstractions, no over-engineering. Just solid, working Go.
+The experiment is a solid foundation for any image processing service, and can be extended to support more operations, storage backends, and scaling strategies.
